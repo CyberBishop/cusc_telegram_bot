@@ -58,20 +58,20 @@ You can also connect with the student council through the [official Instagram pa
 admin_start_message = """
 All messages to this bot should follow either of these two formats:
 
-1) To broadcast a message:
-[categories]
-[message]
+1\) To broadcast a message:
+\[categories\]
+\[message\]
 
-2) To broadcast a message with an attachment (photo or document):
+2\) To broadcast a message with an attachment \(photo or document\):
 /sendmedia
-[categories]
-[message]
-[media_type]
+\[categories\]
+\[message\]
+\[media_type\]
 
 Here are the meanings and possible values of each field above:
 
-- categories
-Is a comma-separated list of groupings you wish to broadcast your message to
+\- categories
+Is a comma\-separated list of groupings you wish to broadcast your message to
 Can be any combination of gen,100,200,300,400,500,private,all
 
 gen comprises of all general groups
@@ -86,10 +86,10 @@ all comprises of all groups and DMs
 **NOTE:**
     The "all" and "private" categories cannot be used with any other category
 
-- message
+\- message
 Is the message content you wish to broadcast
 
-- media_type
+\- media_type
 Specifies what type of attachment you are including with your message
 Can be either photo or document
 
