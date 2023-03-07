@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 pytelegrambotapi = "*"
-python-dotenv = "*"
+python-dotenv = "==0.21.1"
 schedule = "*"
 flask = "*"
 pymongo = {extras = ["srv"], version = "*"}
