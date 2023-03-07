@@ -12,9 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 TOKEN = os.environ["TOKEN"]
-VERCEL_URL = os.environ["VERCEL_URL"]
-
-print(VERCEL_URL)
+APP_URL = os.environ["RENDER_EXTERNAL_URL"]
 
 CHMN = int(os.environ["CHMN"])
 VCM = int(os.environ["VCM"])
@@ -280,7 +278,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url="https://" + VERCEL_URL + "/" + TOKEN)
+    bot.set_webhook(url=APP_URL + "/" + TOKEN)
     return "!", 200
 
 
