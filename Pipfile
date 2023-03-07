@@ -11,13 +11,5 @@ flask = "*"
 pymongo = {extras = ["srv"], version = "*"}
 gunicorn = "*"
 
-[dev-packages]
-autopep8 = "*"
-ipython = "*"
-black = "*"
-
-[requires]
-python_version = "3.11"
-
 [pipenv]
 allow_prereleases = true
