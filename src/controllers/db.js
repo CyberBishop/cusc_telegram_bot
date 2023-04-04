@@ -9,10 +9,10 @@ const insertNewUser = async (id, chatType) => {
 	}
 };
 
-const getIds = async () => {
+const getIds = async (filter) => {
 	console.log("Getting all user IDs");
 
-	const userIds = await BotUser.find();
+	const userIds = await BotUser.find(filter);
 	if (!userIds || userIds.length === 0) {
 		console.log("No IDs exist");
 		return "No IDs exist";
