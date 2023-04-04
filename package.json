@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/israelsgalaxy/cusc_telegram_bot/issues"
   },
-  "homepage": "https://github.com/israelsgalaxy/cusc_telegram_bot#readme"
+  "homepage": "https://github.com/israelsgalaxy/cusc_telegram_bot#readme",
+  "dependencies": {
+    "mongoose": "^7.0.3",
+    "node-telegram-bot-api": "^0.61.0"
+  }
 }
