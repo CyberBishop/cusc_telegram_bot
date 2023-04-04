@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/israelsgalaxy/cusc_telegram_bot#readme",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "mongoose": "^7.0.3",
     "node-telegram-bot-api": "^0.61.0"
   }
