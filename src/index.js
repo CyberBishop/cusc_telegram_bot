@@ -20,11 +20,18 @@ bot.on("message", async (msg) => {
 	if (msg.text === "/start") {
 		// Regular user
 		getIds().then((ids) => {
-			if (ids.includes(msg.from.id.toString()) == "private") {
-				bot.sendMessage(msg.chat.id, "Welcome back!");
+			if (ids.includes(msg.from.id.toString())) {
+				bot.sendMessage(
+					msg.chat.id,
+					(start_message_text = `Hi there \!\!\! 👋\n\nI'm CUSC bot 🤖, the official bot of the CU Student Council.\n\nI'm here to give you first hand information and news concerning student life on campus 🏫.\n\nYou can also connect with the student council through the official Instagram page: https://www.instagram.com/studentcouncil_cu/\n\nStay tuned\!\!\! 💥
+				`)
+				);
 			} else {
 				insertNewUser(msg.from.id, msg.chat.type);
-				bot.sendMessage(msg.chat.id, "Welcome to the bot!");
+				bot.sendMessage(
+					msg.chat.id,
+					(start_message_text = `Hi there \!\!\! 👋\n\nI'm CUSC bot 🤖, the official bot of the CU Student Council.\n\nI'm here to give you first hand information and news concerning student life on campus 🏫.\n\nYou can also connect with the student council through the official Instagram page: https://www.instagram.com/studentcouncil_cu/\n\nStay tuned\!\!\! 💥`)
+				);
 			}
 		});
 		return;
