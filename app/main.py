@@ -6,7 +6,6 @@ from .mongo import insert_new_user, get_ids, change_media_id, get_media_id
 
 import telebot
 from flask import Flask, request
-
 from dotenv import load_dotenv
 
 load_dotenv()
