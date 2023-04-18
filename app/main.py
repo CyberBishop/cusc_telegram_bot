@@ -2,16 +2,14 @@ import os
 import time
 from typing import List
 
-from .mongo import insert_new_user, get_ids, change_media_id, get_media_id
+from mongo import insert_new_user, get_ids, change_media_id, get_media_id
 
 import telebot
-from flask import Flask, request
 from dotenv import load_dotenv
 
 load_dotenv()
 
 TOKEN = os.environ["TOKEN"]
-APP_URL = os.environ["RENDER_EXTERNAL_URL"]
 
 CHMN = int(os.environ["CHMN"])
 VCM = int(os.environ["VCM"])
@@ -20,7 +18,6 @@ EXECSEC = int(os.environ["EXECSEC"])
 PRO = int(os.environ["PRO"])
 
 ADMIN = [CHMN, VCM, VCF, EXECSEC, PRO]
-server = Flask(__name__)
 
 categories = {
     "500": ["DAN", "EIE500", "EEE22", "CU2022"],
@@ -32,7 +29,7 @@ categories = {
 }
 
 new_group_ids = {
-    # CHAP AEIES CUMCH CUCHM CUMD CUSC 
+    # CHAP AEIES CUMCH CUCHM CUMD CUSC
     "gen": [-1001158265107, -1001318860489, -1001433686986, -1001490202977, -1001785807218, -1001682826754],
     # FRESH DEB
     "100": [-1001655184402, -1001536886384],
@@ -40,9 +37,9 @@ new_group_ids = {
     "200": [-1001444929539, -1001536886384, -1001494532036],
     # CU300 DEB MARY
     "300": [-1001218549305, -1001536886384, -1001494532036],
-    # EIE400 DAN 
+    # EIE400 DAN
     "400": [-1001315029935, -1001563004586],
-    # DAN EIE500 CU2022 EEE22 
+    # DAN EIE500 CU2022 EEE22
     "500": [-1001563004586, -1001406974184, -1001572957944, -100398271332]
 }
 
@@ -116,6 +113,7 @@ document
 
 message_dict = dict()
 
+
 def send_messages(ids: List[str], func, **kwargs):
     message_dict.clear()
     count = 0
@@ -128,6 +126,7 @@ def send_messages(ids: List[str], func, **kwargs):
             continue
         if count % 20 == 0:
             time.sleep(.7)
+
 
 @bot.message_handler(commands=['start'])
 def start_message_handler(message):
@@ -266,23 +265,5 @@ def save_new_media(message):
     change_media_id(media_id, type=type)
 
 
-@server.route("/" + TOKEN, methods=["POST"])
-def getMessage():
-    json_string = request.get_data().decode("utf-8")
-    update = telebot.types.Update.de_json(json_string)
-    bot.process_new_updates([update])
-    return "!", 200
-
-
-@server.route("/")
-def webhook():
-    bot.remove_webhook()
-    bot.set_webhook(url=APP_URL + "/" + TOKEN)
-    return "OK!", 200
-
-if __name__ == "__main__":
-  print("Bot is alive")
-  server.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
-  
-  # bot.remove_webhook()
-  # bot.set_webhook(url=APP_URL + "/" + TOKEN)
+bot.remove_webhook()
+bot.infinity_polling()
